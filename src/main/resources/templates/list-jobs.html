@@ -9,10 +9,13 @@
 <div class="container body-content">
 
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
-
     <!-- TODO #3 - Use the same list display from search.html -->
-
+    <h1 th:if= "${jobs}" th:text="${jobs.size() + ' Results Found'}"></h1>
+    <table th:each="job : ${jobs}" class="job-listing">
+        <tr th:each="record : ${job}">
+            <td th:text="${#strings.capitalizeWords(record.key) + ': ' + record.value}"></td>
+        </tr>
+    </table>
 </div>
-
 </body>
 </html>
